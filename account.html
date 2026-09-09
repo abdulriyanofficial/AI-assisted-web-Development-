@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}My Account — Image Downloader Hub{% endblock %}
+{% block content %}
+<main class="account-page"><section class="account-head"><div><span class="section-kicker">ACCOUNT</span><h1>{{ user.name }}</h1><p>{{ user.email }} · Member since {{ user.created_at }}</p></div><a class="outline-btn" href="{{ url_for('logout') }}">Logout</a></section>
+<div class="account-grid"><section class="account-panel"><h2>Search History</h2>{% for x in history %}<div class="history-row"><span>{{ x.search_type|title }}</span><strong>{{ x.query }}</strong><small>{{ x.created_at }}</small></div>{% else %}<p class="muted">No searches yet.</p>{% endfor %}</section><section class="account-panel"><h2>Downloads</h2>{% for x in downloads %}<div class="history-row"><strong>{{ x.image_url }}</strong><small>{{ x.created_at }}</small></div>{% else %}<p class="muted">No downloads yet.</p>{% endfor %}</section><section class="account-panel full"><h2>Wishlist</h2><div class="account-masonry">{% for x in wishlist %}<article><img src="{{ x.thumbnail_url }}" alt="{{ x.title }}"><strong>{{ x.title }}</strong></article>{% else %}<p class="muted">Your wishlist is empty.</p>{% endfor %}</div></section></div></main>
+{% endblock %}
